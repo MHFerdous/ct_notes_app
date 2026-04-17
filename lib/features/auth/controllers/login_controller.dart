@@ -21,29 +21,21 @@ class LoginController extends GetxController {
       try {
         isLoading.value = true;
 
-        Get.dialog(
-          const Center(
-            child: CircularProgressIndicator(color: AppColors.primaryColor),
-          ),
-          barrierDismissible: false,
-        );
-
         await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: emailController.text.trim(),
           password: passwordController.text,
         );
 
-        Get.back();
         Get.snackbar(
           'Success',
           'Logged in successfully!',
-          backgroundColor: AppColors.primaryColor,
+          backgroundColor: AppColors.primaryColor.withValues(alpha: 0.7),
           colorText: Colors.white,
         );
+        emailController.clear();
+        passwordController.clear();
         AppRouter.router.go(AppRouter.home);
       } on FirebaseAuthException catch (e) {
-        Get.back();
-
         String message = 'An error occurred during sign in.';
         if (e.code == 'user-not-found') {
           message = 'No user found for that email.';
@@ -58,15 +50,14 @@ class LoginController extends GetxController {
         Get.snackbar(
           'Login Failed',
           message,
-          backgroundColor: Colors.redAccent,
+          backgroundColor: Colors.red.withValues(alpha: 0.7),
           colorText: Colors.white,
         );
       } catch (e) {
-        Get.back();
         Get.snackbar(
           'Error',
           e.toString(),
-          backgroundColor: Colors.redAccent,
+          backgroundColor: Colors.red.withValues(alpha: 0.7),
           colorText: Colors.white,
         );
       } finally {

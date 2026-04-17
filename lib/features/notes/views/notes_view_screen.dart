@@ -30,7 +30,7 @@ class NotesViewScreen extends StatelessWidget {
                         controller.getGreeting(),
                         style: GoogleFonts.inter(
                           fontSize: 14,
-                          color: AppColors.primaryColor,
+                          color: AppColors.backgroundColor,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -73,7 +73,7 @@ class NotesViewScreen extends StatelessWidget {
                   '${controller.notes.length} ${controller.notes.length == 1 ? 'note' : 'notes'}',
                   style: GoogleFonts.inter(
                     fontSize: 13,
-                    color: AppColors.primaryColor,
+                    color: AppColors.backgroundColor,
                   ),
                 ),
               ),
@@ -175,7 +175,7 @@ class NotesViewScreen extends StatelessWidget {
                                         vertical: 10,
                                       ),
                                       decoration: BoxDecoration(
-                                        color: const Color(0xFF4F46E5),
+                                        color: AppColors.primaryColor,
                                         borderRadius: BorderRadius.circular(10),
                                       ),
                                       child: Text(
@@ -247,7 +247,7 @@ class NotesViewScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => AppRouter.router.push(AppRouter.addNote),
-        backgroundColor: const Color(0xFF4F46E5),
+        backgroundColor: AppColors.primaryColor,
         elevation: 0,
         child: const Icon(Icons.add, color: Colors.white, size: 26),
       ),

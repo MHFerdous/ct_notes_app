@@ -29,7 +29,7 @@ class LoginScreen extends StatelessWidget {
                   width: 52,
                   height: 52,
                   decoration: BoxDecoration(
-                    color: const Color(0xFF4F46E5),
+                    color: AppColors.primaryColor,
                     borderRadius: BorderRadius.circular(14),
                   ),
                   child: const Icon(
@@ -52,7 +52,7 @@ class LoginScreen extends StatelessWidget {
                   'Sign in to continue your notes.',
                   style: GoogleFonts.inter(
                     fontSize: 15,
-                    color: AppColors.primaryColor,
+                    color: AppColors.backgroundColor,
                   ),
                 ),
                 const SizedBox(height: 48),
@@ -82,7 +82,7 @@ class LoginScreen extends StatelessWidget {
                         controller.isPasswordHidden.value
                             ? Icons.visibility_off_outlined
                             : Icons.visibility_outlined,
-                        color: AppColors.primaryColor,
+                        color: AppColors.backgroundColor,
                         size: 20,
                       ),
                       onPressed: controller.togglePasswordVisibility,
@@ -105,7 +105,7 @@ class LoginScreen extends StatelessWidget {
                     child: Text(
                       'Forgot password?',
                       style: GoogleFonts.inter(
-                        color: const Color(0xFF4F46E5),
+                        color: AppColors.primaryColor,
                         fontWeight: FontWeight.w500,
                         fontSize: 14,
                       ),
@@ -113,9 +113,15 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 32),
-                CustomElevatedButton(
-                  text: 'Sign In',
-                  onPressed: controller.login,
+                Obx(
+                  () => CustomElevatedButton(
+                    text: controller.isLoading.value
+                        ? 'Logging in...'
+                        : 'Login',
+                    onPressed: controller.isLoading.value
+                        ? () {}
+                        : controller.login,
+                  ),
                 ),
                 const SizedBox(height: 28),
                 Row(
@@ -124,7 +130,7 @@ class LoginScreen extends StatelessWidget {
                     Text(
                       "Don't have an account? ",
                       style: GoogleFonts.inter(
-                        color: AppColors.primaryColor,
+                        color: AppColors.backgroundColor,
                         fontSize: 14,
                       ),
                     ),
@@ -133,7 +139,7 @@ class LoginScreen extends StatelessWidget {
                       child: Text(
                         'Sign Up',
                         style: GoogleFonts.inter(
-                          color: const Color(0xFF4F46E5),
+                          color: AppColors.primaryColor,
                           fontWeight: FontWeight.w600,
                           fontSize: 14,
                         ),

@@ -64,7 +64,7 @@ class AddNoteScreen extends StatelessWidget {
                 'Write your thoughts below.',
                 style: GoogleFonts.inter(
                   fontSize: 15,
-                  color: AppColors.primaryColor,
+                  color: AppColors.backgroundColor,
                 ),
               ),
               const SizedBox(height: 36),

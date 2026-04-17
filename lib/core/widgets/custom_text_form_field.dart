@@ -35,10 +35,14 @@ class CustomTextFormField extends StatelessWidget {
       decoration: InputDecoration(
         labelText: labelText,
         labelStyle: GoogleFonts.inter(
-          color: AppColors.primaryColor,
+          color: AppColors.backgroundColor,
           fontSize: 14,
         ),
-        prefixIcon: Icon(prefixIcon, color: AppColors.primaryColor, size: 20),
+        prefixIcon: Icon(
+          prefixIcon,
+          color: AppColors.backgroundColor,
+          size: 20,
+        ),
         suffixIcon: suffixIcon,
         filled: true,
         fillColor: const Color(0xFFF0EFEC),
@@ -52,7 +56,10 @@ class CustomTextFormField extends StatelessWidget {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(14),
-          borderSide: const BorderSide(color: Color(0xFF4F46E5), width: 1.5),
+          borderSide: const BorderSide(
+            color: AppColors.primaryColor,
+            width: 1.5,
+          ),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(14),
