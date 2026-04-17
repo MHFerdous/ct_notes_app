@@ -1,4 +1,5 @@
 import 'package:ct_notes_app/core/routes/app_router.dart';
+import 'package:ct_notes_app/core/theme/app_colors.dart';
 import 'package:ct_notes_app/features/notes/controllers/notes_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -29,7 +30,7 @@ class NotesViewScreen extends StatelessWidget {
                         controller.getGreeting(),
                         style: GoogleFonts.inter(
                           fontSize: 14,
-                          color: const Color(0xFF8E8E93),
+                          color: AppColors.primaryColor,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -55,7 +56,7 @@ class NotesViewScreen extends StatelessWidget {
                   '${controller.notes.length} ${controller.notes.length == 1 ? 'note' : 'notes'}',
                   style: GoogleFonts.inter(
                     fontSize: 13,
-                    color: const Color(0xFF8E8E93),
+                    color: AppColors.primaryColor,
                   ),
                 ),
               ),
@@ -78,7 +79,7 @@ class NotesViewScreen extends StatelessWidget {
                           child: const Icon(
                             Icons.edit_note_rounded,
                             size: 40,
-                            color: Color(0xFF8E8E93),
+                            color: AppColors.primaryColor,
                           ),
                         ),
                         const SizedBox(height: 20),
@@ -95,7 +96,7 @@ class NotesViewScreen extends StatelessWidget {
                           'Tap the + button to create your first note',
                           style: GoogleFonts.inter(
                             fontSize: 14,
-                            color: const Color(0xFF8E8E93),
+                            color: AppColors.primaryColor,
                           ),
                         ),
                       ],

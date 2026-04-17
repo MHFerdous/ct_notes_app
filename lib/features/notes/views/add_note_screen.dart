@@ -1,4 +1,5 @@
 import 'package:ct_notes_app/core/routes/app_router.dart';
+import 'package:ct_notes_app/core/theme/app_colors.dart';
 import 'package:ct_notes_app/core/widgets/custom_elevated_button.dart';
 import 'package:ct_notes_app/core/widgets/custom_text_form_field.dart';
 import 'package:ct_notes_app/features/notes/controllers/add_notes_controller.dart';
@@ -63,7 +64,7 @@ class AddNoteScreen extends StatelessWidget {
                 'Write your thoughts below.',
                 style: GoogleFonts.inter(
                   fontSize: 15,
-                  color: const Color(0xFF8E8E93),
+                  color: AppColors.primaryColor,
                 ),
               ),
               const SizedBox(height: 36),

@@ -4,6 +4,7 @@ import 'package:ct_notes_app/features/notes/views/add_note_screen.dart';
 import 'package:ct_notes_app/features/notes/views/notes_view_screen.dart';
 import 'package:ct_notes_app/features/splash/view/splash_screen.dart';
 import 'package:go_router/go_router.dart';
+import 'package:get/get.dart';
 
 class AppRouter {
   static const String splash = '/';
@@ -13,6 +14,7 @@ class AppRouter {
   static const String addNote = '/add-note';
 
   static final GoRouter router = GoRouter(
+    navigatorKey: Get.key,
     initialLocation: splash,
     routes: [
       GoRoute(
