@@ -10,45 +10,47 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.put(SplashController());
 
-
     return Scaffold(
-      body: Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [Colors.blue.withValues(alpha: 0.6), Colors.blue],
-          ),
-        ),
-        child: SafeArea(
+      backgroundColor: const Color(0xFFF8F7F4),
+      body: SafeArea(
+        child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const Spacer(),
-              const Icon(
-                Icons.note_alt_rounded,
-                size: 100,
-                color: Colors.white,
-              ),
-              const SizedBox(height: 20),
-              Text(
-                'My Notes',
-                style: GoogleFonts.poppins(
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
+              Container(
+                width: 72,
+                height: 72,
+                decoration: BoxDecoration(
+                  color: const Color(0xFF4F46E5),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: const Icon(
+                  Icons.edit_note_rounded,
                   color: Colors.white,
-                  letterSpacing: 2,
+                  size: 38,
                 ),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 24),
               Text(
-                'Captuing my thoughts',
-                style: GoogleFonts.poppins(fontSize: 16, color: Colors.white),
+                'My Notes',
+                style: GoogleFonts.inter(
+                  fontSize: 52,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+              const SizedBox(height: 16),
+              Text(
+                'Capture your thoughts,\nanytime, anywhere.',
+                textAlign: TextAlign.center,
+                style: GoogleFonts.inter(
+                  fontSize: 17,
+                  color: const Color(0xFF8E8E93),
+                ),
               ),
               const Spacer(),
-              const CircularProgressIndicator(color: Colors.white),
-              const SizedBox(height: 10),
+              CircularProgressIndicator(color: const Color(0xFF4F46E5)),
+              const SizedBox(height: 40),
             ],
           ),
         ),

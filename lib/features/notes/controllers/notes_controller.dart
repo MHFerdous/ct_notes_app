@@ -12,9 +12,19 @@ class NotesController extends GetxController {
 
   void _loadDemoNotes() {
     notes.assignAll([
-      NoteModel(title: 'Grocery List', description: 'Milk, Eggs, Bread, Butter'),
-      NoteModel(title: 'Meeting Notes', description: 'Discuss project timeline and milestones. Make sure to review the MVP features.'),
-      NoteModel(title: 'Ideas', description: 'App features: dark mode, sync, tags, markdown support.'),
+      NoteModel(
+        title: 'Grocery List',
+        description: 'Milk, Eggs, Bread, Butter',
+      ),
+      NoteModel(
+        title: 'Meeting Notes',
+        description:
+            'Discuss project timeline and milestones. Make sure to review the MVP features.',
+      ),
+      NoteModel(
+        title: 'Ideas',
+        description: 'App features: dark mode, sync, tags, markdown support.',
+      ),
     ]);
   }
 

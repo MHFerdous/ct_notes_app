@@ -14,36 +14,50 @@ class LoginScreen extends StatelessWidget {
     final controller = Get.put(LoginController());
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color(0xFFF8F7F4),
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Form(
             key: controller.loginFormKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 50),
+                const SizedBox(height: 60),
+                Container(
+                  width: 52,
+                  height: 52,
+                  decoration: BoxDecoration(
+                    color: const Color(0xFF4F46E5),
+                    borderRadius: BorderRadius.circular(14),
+                  ),
+                  child: const Icon(
+                    Icons.edit_note_rounded,
+                    color: Colors.white,
+                    size: 28,
+                  ),
+                ),
+                const SizedBox(height: 28),
                 Text(
-                  'Welcome Back',
-                  style: GoogleFonts.poppins(
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.blue.shade800,
+                  'Welcome\nback.',
+                  style: GoogleFonts.inter(
+                    fontSize: 38,
+                    fontWeight: FontWeight.w800,
+                    color: const Color(0xFF1A1A2E),
                   ),
                 ),
                 const SizedBox(height: 10),
                 Text(
                   'Sign in to continue your notes.',
-                  style: GoogleFonts.poppins(
-                    fontSize: 16,
-                    color: Colors.grey.shade600,
+                  style: GoogleFonts.inter(
+                    fontSize: 15,
+                    color: const Color(0xFF8E8E93),
                   ),
                 ),
-                const SizedBox(height: 50),
+                const SizedBox(height: 48),
                 CustomTextFormField(
                   controller: controller.emailController,
-                  labelText: 'Email',
+                  labelText: 'Email address',
                   prefixIcon: Icons.email_outlined,
                   keyboardType: TextInputType.emailAddress,
                   validator: (value) {
@@ -65,8 +79,10 @@ class LoginScreen extends StatelessWidget {
                     suffixIcon: IconButton(
                       icon: Icon(
                         controller.isPasswordHidden.value
-                            ? Icons.visibility_off
-                            : Icons.visibility,
+                            ? Icons.visibility_off_outlined
+                            : Icons.visibility_outlined,
+                        color: const Color(0xFF8E8E93),
+                        size: 20,
                       ),
                       onPressed: controller.togglePasswordVisibility,
                     ),
@@ -80,47 +96,51 @@ class LoginScreen extends StatelessWidget {
                     },
                   ),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 12),
                 Align(
                   alignment: Alignment.centerRight,
                   child: GestureDetector(
                     onTap: () {},
                     child: Text(
-                      'Forgot Password?',
-                      style: GoogleFonts.poppins(
-                        color: Colors.blue.shade700,
+                      'Forgot password?',
+                      style: GoogleFonts.inter(
+                        color: const Color(0xFF4F46E5),
                         fontWeight: FontWeight.w500,
+                        fontSize: 14,
                       ),
                     ),
                   ),
                 ),
-                const SizedBox(height: 30),
+                const SizedBox(height: 32),
                 CustomElevatedButton(
                   text: 'Sign In',
                   onPressed: controller.login,
                 ),
-                const SizedBox(height: 30),
+                const SizedBox(height: 28),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Don't have an account?",
-                      style: GoogleFonts.poppins(color: Colors.grey.shade700),
+                      "Don't have an account? ",
+                      style: GoogleFonts.inter(
+                        color: const Color(0xFF8E8E93),
+                        fontSize: 14,
+                      ),
                     ),
-                    TextButton(
-                      onPressed: () {
-                        AppRouter.router.go(AppRouter.register);
-                      },
+                    GestureDetector(
+                      onTap: () => AppRouter.router.go(AppRouter.register),
                       child: Text(
                         'Sign Up',
-                        style: GoogleFonts.poppins(
-                          color: Colors.blue.shade700,
-                          fontWeight: FontWeight.bold,
+                        style: GoogleFonts.inter(
+                          color: const Color(0xFF4F46E5),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 14,
                         ),
                       ),
                     ),
                   ],
                 ),
+                const SizedBox(height: 32),
               ],
             ),
           ),

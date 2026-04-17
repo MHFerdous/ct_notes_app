@@ -14,51 +14,65 @@ class RegisterScreen extends StatelessWidget {
     final controller = Get.put(SignupController());
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color(0xFFF8F7F4),
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: const Color(0xFFF8F7F4),
+        surfaceTintColor: Colors.transparent,
         elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () {
+        leading: GestureDetector(
+          onTap: () {
             if (AppRouter.router.canPop()) {
               AppRouter.router.pop();
             } else {
               AppRouter.router.go(AppRouter.login);
             }
           },
+          child: Container(
+            margin: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: const Color(0xFFF0EFEC),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: const Icon(
+              Icons.arrow_back_ios_new_rounded,
+              color: Color(0xFF1A1A2E),
+              size: 18,
+            ),
+          ),
         ),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.symmetric(horizontal: 28.0),
           child: Form(
             key: controller.signupFormKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 10),
+                const SizedBox(height: 16),
                 Text(
-                  'Create Account',
-                  style: GoogleFonts.poppins(
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.blue.shade800,
+                  'Create\naccount.',
+                  style: GoogleFonts.inter(
+                    fontSize: 38,
+                    fontWeight: FontWeight.w800,
+                    color: const Color(0xFF1A1A2E),
+                    height: 1.15,
+                    letterSpacing: -1.2,
                   ),
                 ),
                 const SizedBox(height: 10),
                 Text(
-                  'Sign up to get started!',
-                  style: GoogleFonts.poppins(
-                    fontSize: 16,
-                    color: Colors.grey.shade600,
+                  'Start organizing your thoughts today.',
+                  style: GoogleFonts.inter(
+                    fontSize: 15,
+                    color: const Color(0xFF8E8E93),
                   ),
                 ),
                 const SizedBox(height: 40),
                 CustomTextFormField(
                   controller: controller.nameController,
-                  labelText: 'Full Name',
-                  prefixIcon: Icons.person_outline,
+                  labelText: 'Full name',
+                  prefixIcon: Icons.person_outline_rounded,
                   validator: (value) {
                     if (value == null || value.trim().isEmpty) {
                       return 'Please enter your full name';
@@ -71,7 +85,7 @@ class RegisterScreen extends StatelessWidget {
                 const SizedBox(height: 20),
                 CustomTextFormField(
                   controller: controller.emailController,
-                  labelText: 'Email',
+                  labelText: 'Email address',
                   prefixIcon: Icons.email_outlined,
                   keyboardType: TextInputType.emailAddress,
                   validator: (value) {
@@ -93,8 +107,10 @@ class RegisterScreen extends StatelessWidget {
                     suffixIcon: IconButton(
                       icon: Icon(
                         controller.isPasswordHidden.value
-                            ? Icons.visibility_off
-                            : Icons.visibility,
+                            ? Icons.visibility_off_outlined
+                            : Icons.visibility_outlined,
+                        color: const Color(0xFF8E8E93),
+                        size: 20,
                       ),
                       onPressed: controller.togglePasswordVisibility,
                     ),
@@ -108,34 +124,36 @@ class RegisterScreen extends StatelessWidget {
                     },
                   ),
                 ),
-                const SizedBox(height: 40),
+                const SizedBox(height: 36),
                 CustomElevatedButton(
-                  text: 'Sign Up',
+                  text: 'Create Account',
                   onPressed: controller.signup,
                 ),
-                const SizedBox(height: 30),
+                const SizedBox(height: 28),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Already have an account?",
-                      style: GoogleFonts.poppins(color: Colors.grey.shade700),
+                      'Already have an account? ',
+                      style: GoogleFonts.inter(
+                        color: const Color(0xFF8E8E93),
+                        fontSize: 14,
+                      ),
                     ),
-                    TextButton(
-                      onPressed: () {
-                        AppRouter.router.go(AppRouter.login);
-                      },
+                    GestureDetector(
+                      onTap: () => AppRouter.router.go(AppRouter.login),
                       child: Text(
-                        'Login',
-                        style: GoogleFonts.poppins(
-                          color: Colors.blue.shade700,
-                          fontWeight: FontWeight.bold,
+                        'Sign In',
+                        style: GoogleFonts.inter(
+                          color: const Color(0xFF4F46E5),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 14,
                         ),
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 32),
               ],
             ),
           ),

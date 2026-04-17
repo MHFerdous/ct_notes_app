@@ -4,37 +4,34 @@ import 'package:google_fonts/google_fonts.dart';
 class CustomElevatedButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
-  final double? height;
-  final double? width;
 
   const CustomElevatedButton({
     super.key,
     required this.text,
     required this.onPressed,
-    this.height,
-    this.width,
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: 55,
+      height: 56,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.blue.shade600,
+          backgroundColor: const Color(0xFF4F46E5),
+          foregroundColor: Colors.white,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(14),
           ),
-          elevation: 2,
+          elevation: 0,
         ),
         child: Text(
           text,
-          style: GoogleFonts.poppins(
-            fontSize: 18,
+          style: GoogleFonts.inter(
+            fontSize: 16,
             fontWeight: FontWeight.w600,
-            color: Colors.white,
+            letterSpacing: 0.3,
           ),
         ),
       ),

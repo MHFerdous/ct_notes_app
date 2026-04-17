@@ -12,135 +12,213 @@ class NotesViewScreen extends StatelessWidget {
     final controller = Get.put(NotesController());
 
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: Text(
-          '${controller.getGreeting()} Ferdous!',
-          style: GoogleFonts.poppins(
-            fontWeight: FontWeight.bold,
-            color: Colors.blue.shade800,
-          ),
-        ),
-        backgroundColor: Colors.white,
-        elevation: 0,
-      ),
-      body: Obx(() {
-        if (controller.notes.isEmpty) {
-          return Center(
-            child: Text(
-              'No notes yet!',
-              style: GoogleFonts.poppins(color: Colors.grey),
-            ),
-          );
-        }
-        return ListView.builder(
-          padding: const EdgeInsets.all(16.0),
-          itemCount: controller.notes.length,
-          itemBuilder: (context, index) {
-            final note = controller.notes[index];
-            return Container(
-              margin: const EdgeInsets.only(bottom: 16.0),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(16),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.04),
-                    offset: const Offset(0, 4),
-                    blurRadius: 12,
+      backgroundColor: const Color(0xFFF8F7F4),
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        controller.getGreeting(),
+                        style: GoogleFonts.inter(
+                          fontSize: 14,
+                          color: const Color(0xFF8E8E93),
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      const SizedBox(height: 2),
+                      Text(
+                        'Ferdous',
+                        style: GoogleFonts.inter(
+                          fontSize: 26,
+                          fontWeight: FontWeight.w800,
+                          color: const Color(0xFF1A1A2E),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
-                border: Border.all(color: Colors.blue.shade50, width: 1.5),
               ),
-              child: ListTile(
-                contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 20.0,
-                  vertical: 12.0,
-                ),
-                leading: Container(
-                  padding: const EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                    color: Colors.blue.shade50,
-                    shape: BoxShape.circle,
-                  ),
-                  child: Icon(
-                    Icons.note_alt_outlined,
-                    color: Colors.blue.shade600,
+            ),
+            const SizedBox(height: 8),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24.0),
+              child: Obx(
+                () => Text(
+                  '${controller.notes.length} ${controller.notes.length == 1 ? 'note' : 'notes'}',
+                  style: GoogleFonts.inter(
+                    fontSize: 13,
+                    color: const Color(0xFF8E8E93),
                   ),
                 ),
-                title: Text(
-                  note.title,
-                  style: GoogleFonts.poppins(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 16,
-                    color: Colors.black87,
-                  ),
-                ),
-                subtitle: Padding(
-                  padding: const EdgeInsets.only(top: 6.0),
-                  child: Text(
-                    note.description,
-                    style: GoogleFonts.poppins(
-                      color: Colors.grey.shade600,
-                      fontSize: 14,
+              ),
+            ),
+            const SizedBox(height: 20),
+            Expanded(
+              child: Obx(() {
+                if (controller.notes.isEmpty) {
+                  return Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: 80,
+                          height: 80,
+                          decoration: BoxDecoration(
+                            color: const Color(0xFFF0EFEC),
+                            borderRadius: BorderRadius.circular(24),
+                          ),
+                          child: const Icon(
+                            Icons.edit_note_rounded,
+                            size: 40,
+                            color: Color(0xFF8E8E93),
+                          ),
+                        ),
+                        const SizedBox(height: 20),
+                        Text(
+                          'No notes yet',
+                          style: GoogleFonts.inter(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                            color: const Color(0xFF1A1A2E),
+                          ),
+                        ),
+                        const SizedBox(height: 6),
+                        Text(
+                          'Tap the + button to create your first note',
+                          style: GoogleFonts.inter(
+                            fontSize: 14,
+                            color: const Color(0xFF8E8E93),
+                          ),
+                        ),
+                      ],
                     ),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-                onTap: () {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return AlertDialog(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        title: Text(
-                          note.title,
-                          style: GoogleFonts.poppins(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.blue.shade800,
-                          ),
-                        ),
-                        content: SingleChildScrollView(
-                          child: Text(
-                            note.description,
-                            style: GoogleFonts.poppins(
-                              fontSize: 16,
-                              color: Colors.black87,
+                  );
+                }
+                return ListView.builder(
+                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                  itemCount: controller.notes.length,
+                  itemBuilder: (context, index) {
+                    final note = controller.notes[index];
+                    const cardColor = Colors.white;
+
+                    return GestureDetector(
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              backgroundColor: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              title: Text(
+                                note.title,
+                                style: GoogleFonts.inter(
+                                  fontWeight: FontWeight.w700,
+                                  color: const Color(0xFF1A1A2E),
+                                  fontSize: 18,
+                                ),
+                              ),
+                              content: SingleChildScrollView(
+                                child: Text(
+                                  note.description,
+                                  style: GoogleFonts.inter(
+                                    fontSize: 15,
+                                    color: const Color(0xFF3D3D3D),
+                                  ),
+                                ),
+                              ),
+                              actions: [
+                                GestureDetector(
+                                  onTap: () => Navigator.of(context).pop(),
+                                  child: Container(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 20,
+                                      vertical: 10,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xFF4F46E5),
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: Text(
+                                      'Close',
+                                      style: GoogleFonts.inter(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      },
+                      child: Container(
+                        margin: const EdgeInsets.only(bottom: 14.0),
+                        padding: const EdgeInsets.all(18),
+                        decoration: BoxDecoration(
+                          color: cardColor,
+                          borderRadius: BorderRadius.circular(18),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withValues(alpha: 0.03),
+                              blurRadius: 10,
+                              offset: const Offset(0, 4),
                             ),
+                          ],
+                          border: Border.all(
+                            color: const Color(0xFFF0EFEC),
+                            width: 1,
                           ),
                         ),
-                        actions: [
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.of(context).pop();
-                            },
-                            child: Text(
-                              'Close',
-                              style: GoogleFonts.poppins(
-                                color: Colors.blue.shade700,
-                                fontWeight: FontWeight.bold,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              note.title,
+                              style: GoogleFonts.inter(
+                                fontWeight: FontWeight.w700,
+                                fontSize: 16,
+                                color: const Color(0xFF1A1A2E),
                               ),
                             ),
-                          ),
-                        ],
-                      );
-                    },
-                  );
-                },
-              ),
-            );
-          },
-        );
-      }),
+                            const SizedBox(height: 8),
+                            Text(
+                              note.description,
+                              style: GoogleFonts.inter(
+                                color: const Color(0xFF3D3D3D),
+                                fontSize: 14,
+                                height: 1.5,
+                              ),
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                );
+              }),
+            ),
+          ],
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          AppRouter.router.push(AppRouter.addNote);
-        },
-        backgroundColor: Colors.blue.shade600,
-        child: const Icon(Icons.add, color: Colors.white),
+        onPressed: () => AppRouter.router.push(AppRouter.addNote),
+        backgroundColor: const Color(0xFF4F46E5),
+        elevation: 0,
+        child: const Icon(Icons.add, color: Colors.white, size: 26),
       ),
     );
   }
