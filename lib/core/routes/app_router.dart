@@ -1,0 +1,36 @@
+import 'package:ct_notes_app/features/auth/views/login_screen.dart';
+import 'package:ct_notes_app/features/auth/views/signup_screen.dart';
+import 'package:ct_notes_app/features/notes/views/notes_view_screen.dart';
+import 'package:ct_notes_app/features/splash/view/splash_screen.dart';
+import 'package:go_router/go_router.dart';
+
+class AppRouter {
+  static const String splash = '/';
+  static const String login = '/login';
+  static const String register = '/register';
+  static const String home = '/home';
+  static const String addNote = '/add-note';
+
+  static final GoRouter router = GoRouter(
+    initialLocation: splash,
+    routes: [
+      GoRoute(
+        path: splash,
+        builder: (context, state) => const SplashScreen(),
+      ),
+      GoRoute(
+        path: login,
+        builder: (context, state) => const LoginScreen(),
+      ),
+      GoRoute(
+        path: register,
+        builder: (context, state) => const RegisterScreen(),
+      ),
+      GoRoute(
+        path: home,
+        builder: (context, state) => const NotesViewScreen(),
+      ),
+      // AddNoteView can be added later as per step-by-step instructions
+    ],
+  );
+}
