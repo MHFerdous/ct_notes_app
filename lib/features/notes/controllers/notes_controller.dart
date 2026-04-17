@@ -1,31 +1,80 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ct_notes_app/core/routes/app_router.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ct_notes_app/features/notes/models/note_model.dart';
+import 'dart:async';
 
 class NotesController extends GetxController {
   final RxList<NoteModel> notes = <NoteModel>[].obs;
+  final RxString userName = ''.obs;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  StreamSubscription? _notesSubscription;
 
   @override
   void onInit() {
     super.onInit();
-    _loadDemoNotes();
+    _fetchUserName();
+    _startListeningToNotes();
   }
 
-  void _loadDemoNotes() {
-    notes.assignAll([
-      NoteModel(
-        title: 'Grocery List',
-        description: 'Milk, Eggs, Bread, Butter',
-      ),
-      NoteModel(
-        title: 'Meeting Notes',
-        description:
-            'Discuss project timeline and milestones. Make sure to review the MVP features.',
-      ),
-      NoteModel(
-        title: 'Ideas',
-        description: 'App features: dark mode, sync, tags, markdown support.',
-      ),
-    ]);
+  Future<void> _fetchUserName() async {
+    final user = _auth.currentUser;
+    if (user != null) {
+      try {
+        final doc = await _firestore.collection('users').doc(user.uid).get();
+        if (doc.exists && doc.data()?['name'] != null) {
+          userName.value = doc.data()!['name'];
+        }
+      } catch (e) {
+        debugPrint('Error fetching user name: $e');
+      }
+    }
+  }
+
+  Future<void> logout() async {
+    try {
+      await _auth.signOut();
+      AppRouter.router.go(AppRouter.login);
+      Get.snackbar(
+        'Logged Out',
+        'You have been successfully logged out.',
+        backgroundColor: Colors.blueAccent,
+        colorText: Colors.white,
+      );
+    } catch (e) {
+      Get.snackbar('Error', 'Failed to logout: $e');
+    }
+  }
+
+  Future<void> refreshNotes() async {
+    _notesSubscription?.cancel();
+    _startListeningToNotes();
+    await Future.delayed(const Duration(milliseconds: 800));
+  }
+
+  void _startListeningToNotes() {
+    final user = _auth.currentUser;
+    if (user != null) {
+      _notesSubscription = _firestore
+          .collection('notes')
+          .where('userId', isEqualTo: user.uid)
+          .orderBy('createdAt', descending: true)
+          .snapshots()
+          .listen((snapshot) {
+            notes.value = snapshot.docs
+                .map((doc) => NoteModel.fromMap(doc.id, doc.data()))
+                .toList();
+          });
+    }
+  }
+
+  @override
+  void onClose() {
+    _notesSubscription?.cancel();
+    super.onClose();
   }
 
   String getGreeting() {

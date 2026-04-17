@@ -37,7 +37,7 @@ class LoginController extends GetxController {
         Get.snackbar(
           'Success',
           'Logged in successfully!',
-          backgroundColor: Colors.green,
+          backgroundColor: AppColors.primaryColor,
           colorText: Colors.white,
         );
         AppRouter.router.go(AppRouter.home);

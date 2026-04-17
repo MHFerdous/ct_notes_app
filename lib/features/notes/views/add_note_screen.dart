@@ -81,17 +81,21 @@ class AddNoteScreen extends StatelessWidget {
                 maxLines: 5,
               ),
               const SizedBox(height: 40),
-              CustomElevatedButton(
-                text: 'Save Note',
-                onPressed: () {
-                  if (controller.addNote()) {
-                    if (AppRouter.router.canPop()) {
-                      AppRouter.router.pop();
-                    } else {
-                      AppRouter.router.go(AppRouter.home);
-                    }
-                  }
-                },
+              Obx(
+                () => CustomElevatedButton(
+                  text: controller.isLoading.value ? 'Saving...' : 'Save Note',
+                  onPressed: controller.isLoading.value
+                      ? () {}
+                      : () async {
+                          if (await controller.addNote()) {
+                            if (AppRouter.router.canPop()) {
+                              AppRouter.router.pop();
+                            } else {
+                              AppRouter.router.go(AppRouter.home);
+                            }
+                          }
+                        },
+                ),
               ),
               const SizedBox(height: 32),
             ],
