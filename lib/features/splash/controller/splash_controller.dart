@@ -9,7 +9,7 @@ class SplashController extends GetxController {
   }
 
   void _navigateToNext() async {
-    await Future.delayed(const Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 300));
     AppRouter.router.go(AppRouter.login);
   }
 }

@@ -1,5 +1,6 @@
 import 'package:ct_notes_app/features/auth/views/login_screen.dart';
 import 'package:ct_notes_app/features/auth/views/signup_screen.dart';
+import 'package:ct_notes_app/features/notes/views/add_note_screen.dart';
 import 'package:ct_notes_app/features/notes/views/notes_view_screen.dart';
 import 'package:ct_notes_app/features/splash/view/splash_screen.dart';
 import 'package:go_router/go_router.dart';
@@ -30,7 +31,10 @@ class AppRouter {
         path: home,
         builder: (context, state) => const NotesViewScreen(),
       ),
-      // AddNoteView can be added later as per step-by-step instructions
+      GoRoute(
+        path: addNote,
+        builder: (context, state) => const AddNoteScreen(),
+      ),
     ],
   );
 }

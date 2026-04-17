@@ -1,10 +1,9 @@
-import 'package:flutter/material.dart';
+class NoteModel {
+  final String title;
+  final String description;
 
-class NotesViewScreen extends StatelessWidget {
-  const NotesViewScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold();
-  }
+  NoteModel({
+    required this.title,
+    required this.description,
+  });
 }
