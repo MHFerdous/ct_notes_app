@@ -20,6 +20,8 @@ A premium, minimalist notes application built with Flutter and Firebase. My Note
 ## ScreenShots
 
 
+<img width="720" height="1640" alt="WhatsApp Image 2026-04-17 at 10 32 48 PM" src="https://github.com/user-attachments/assets/2c499d5d-cf79-4a9a-a536-8faad3173d85" />
+
 <img width="720" height="1640" alt="WhatsApp Image 2026-04-17 at 10 32 48 PM" src="https://github.com/user-attachments/assets/7f087d6a-71fc-4f9b-bb53-4712165c4a9c" />
 
 <img width="720" height="1640" alt="WhatsApp Image 2026-04-17 at 10 32 48 PM" src="https://github.com/user-attachments/assets/27e4a64e-c6f6-45fd-adbc-722636081c40" />
