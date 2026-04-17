@@ -122,7 +122,7 @@ class NotesViewScreen extends StatelessWidget {
                                 'Tap the + button to create your first note',
                                 style: GoogleFonts.inter(
                                   fontSize: 14,
-                                  color: AppColors.primaryColor,
+                                  color: AppColors.backgroundColor,
                                 ),
                               ),
                             ],
