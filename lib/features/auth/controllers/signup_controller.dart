@@ -23,13 +23,6 @@ class SignupController extends GetxController {
       try {
         isLoading.value = true;
 
-        Get.dialog(
-          const Center(
-            child: CircularProgressIndicator(color: AppColors.primaryColor),
-          ),
-          barrierDismissible: false,
-        );
-
         final authResult = await FirebaseAuth.instance
             .createUserWithEmailAndPassword(
               email: emailController.text.trim(),
@@ -46,17 +39,18 @@ class SignupController extends GetxController {
                 'createdAt': FieldValue.serverTimestamp(),
               });
 
-          Get.back();
           Get.snackbar(
             'Success',
             'Account created successfully!',
-            backgroundColor: Colors.green,
+            backgroundColor: AppColors.primaryColor.withValues(alpha: 0.7),
             colorText: Colors.white,
           );
           AppRouter.router.go(AppRouter.home);
+          nameController.clear();
+          emailController.clear();
+          passwordController.clear();
         }
       } on FirebaseAuthException catch (e) {
-        Get.back();
         debugPrint(e.toString());
         String message = 'An error occurred during signup';
         if (e.code == 'weak-password') {
@@ -68,16 +62,15 @@ class SignupController extends GetxController {
         Get.snackbar(
           'Signup Failed',
           message,
-          backgroundColor: Colors.redAccent,
+          backgroundColor: Colors.red.withValues(alpha: 0.7),
           colorText: Colors.white,
         );
       } catch (e) {
-        Get.back();
         debugPrint(e.toString());
         Get.snackbar(
           'Error',
           e.toString(),
-          backgroundColor: Colors.redAccent,
+          backgroundColor: Colors.red.withValues(alpha: 0.7),
           colorText: Colors.white,
         );
       } finally {

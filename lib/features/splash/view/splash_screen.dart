@@ -46,11 +46,11 @@ class SplashScreen extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: GoogleFonts.inter(
                   fontSize: 17,
-                  color: AppColors.primaryColor,
+                  color: AppColors.backgroundColor,
                 ),
               ),
               const Spacer(),
-              CircularProgressIndicator(color: const Color(0xFF4F46E5)),
+              CircularProgressIndicator(color: AppColors.primaryColor),
               const SizedBox(height: 40),
             ],
           ),

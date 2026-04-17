@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ct_notes_app/core/theme/app_colors.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:ct_notes_app/features/notes/models/note_model.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ class AddNotesController extends GetxController {
       Get.snackbar(
         'Missing Fields',
         'Please enter a title and a description to save your note.',
-        backgroundColor: Colors.orangeAccent,
+        backgroundColor: Colors.red.withValues(alpha: 0.7),
         colorText: Colors.white,
       );
       return false;
@@ -28,7 +29,11 @@ class AddNotesController extends GetxController {
       final user = FirebaseAuth.instance.currentUser;
 
       if (user == null) {
-        Get.snackbar('Error', 'User not logged in');
+        Get.snackbar(
+          'Error',
+          'User not logged in',
+          backgroundColor: Colors.red.withValues(alpha: 0.7),
+        );
         return false;
       }
 
@@ -46,7 +51,7 @@ class AddNotesController extends GetxController {
       Get.snackbar(
         'Success',
         'Note saved successfully!',
-        backgroundColor: Colors.green,
+        backgroundColor: AppColors.primaryColor.withValues(alpha: 0.7),
         colorText: Colors.white,
       );
 
@@ -55,7 +60,7 @@ class AddNotesController extends GetxController {
       Get.snackbar(
         'Error',
         'Failed to save note: $e',
-        backgroundColor: Colors.redAccent,
+        backgroundColor: Colors.red.withValues(alpha: 0.7),
         colorText: Colors.white,
       );
       return false;

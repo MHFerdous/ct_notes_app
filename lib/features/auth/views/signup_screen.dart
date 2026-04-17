@@ -66,7 +66,7 @@ class RegisterScreen extends StatelessWidget {
                   'Start organizing your thoughts today.',
                   style: GoogleFonts.inter(
                     fontSize: 15,
-                    color: AppColors.primaryColor,
+                    color: AppColors.backgroundColor,
                   ),
                 ),
                 const SizedBox(height: 40),
@@ -110,7 +110,7 @@ class RegisterScreen extends StatelessWidget {
                         controller.isPasswordHidden.value
                             ? Icons.visibility_off_outlined
                             : Icons.visibility_outlined,
-                        color: AppColors.primaryColor,
+                        color: AppColors.backgroundColor,
                         size: 20,
                       ),
                       onPressed: controller.togglePasswordVisibility,
@@ -126,9 +126,15 @@ class RegisterScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 36),
-                CustomElevatedButton(
-                  text: 'Create Account',
-                  onPressed: controller.signup,
+                Obx(
+                  () => CustomElevatedButton(
+                    text: controller.isLoading.value
+                        ? 'Creating Account...'
+                        : 'Create Account',
+                    onPressed: controller.isLoading.value
+                        ? () {}
+                        : controller.signup,
+                  ),
                 ),
                 const SizedBox(height: 28),
                 Row(
@@ -137,7 +143,7 @@ class RegisterScreen extends StatelessWidget {
                     Text(
                       'Already have an account? ',
                       style: GoogleFonts.inter(
-                        color: AppColors.primaryColor,
+                        color: AppColors.backgroundColor,
                         fontSize: 14,
                       ),
                     ),
@@ -146,7 +152,7 @@ class RegisterScreen extends StatelessWidget {
                       child: Text(
                         'Sign In',
                         style: GoogleFonts.inter(
-                          color: const Color(0xFF4F46E5),
+                          color: AppColors.primaryColor,
                           fontWeight: FontWeight.w600,
                           fontSize: 14,
                         ),
