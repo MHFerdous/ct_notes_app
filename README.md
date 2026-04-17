@@ -1,14 +1,14 @@
-# My Notes App 📝
+# My Notes App
 
 A premium, minimalist notes application built with Flutter and Firebase. My Notes offers a seamless and elegant experience for capturing your thoughts, organized with a modern aesthetic and real-time synchronization.
 
 ---
 
-## ✨ Features
+## Features
 
 - **Secure Authentication**: Robust login and signup system powered by Firebase Auth.
 - **Real-time Notes**: Create, view, and manage your notes with instant synchronization via Cloud Firestore.
-- **Dynamic UI**: Reactive interface that updates instantly as you type and save.
+- **Dynamic UI**: A reactive interface that updates instantly as you type and save.
 - **Premium Design**: A clean, indigo-themed interface featuring:
   - Responsive layouts.
   - Modern typography (Google Fonts Inter).
@@ -17,7 +17,21 @@ A premium, minimalist notes application built with Flutter and Firebase. My Note
 
 ---
 
-## 🚀 Tech Stack
+## ScreenShots
+
+
+<img width="720" height="1640" alt="WhatsApp Image 2026-04-17 at 10 32 48 PM" src="https://github.com/user-attachments/assets/7f087d6a-71fc-4f9b-bb53-4712165c4a9c" />
+
+<img width="720" height="1640" alt="WhatsApp Image 2026-04-17 at 10 32 48 PM" src="https://github.com/user-attachments/assets/27e4a64e-c6f6-45fd-adbc-722636081c40" />
+
+<img width="720" height="1640" alt="WhatsApp Image 2026-04-17 at 10 32 46 PM" src="https://github.com/user-attachments/assets/084b9060-7b9a-467b-a22f-30fba09b6b38" />
+
+<img width="720" height="1640" alt="WhatsApp Image 2026-04-17 at 10 32 47 PM" src="https://github.com/user-attachments/assets/b7be6585-b23c-4520-b07a-eaf75e8dca53" />
+
+
+---
+
+## Tech Stack
 
 - **Framework**: [Flutter](https://flutter.dev/)
 - **State Management**: [GetX](https://pub.dev/packages/get)
@@ -27,7 +41,7 @@ A premium, minimalist notes application built with Flutter and Firebase. My Note
 
 ---
 
-## 🏗️ Project Structure
+## Project Structure
 
 The project follows a **Feature-First Architecture** for scalability and maintainability:
 
@@ -46,7 +60,7 @@ lib/
 
 ---
 
-## 🛠️ Setup & Installation
+## Setup & Installation
 
 ### Prerequisites
 - [Flutter SDK](https://docs.flutter.dev/get-started/install) (v3.10.4 or higher)
