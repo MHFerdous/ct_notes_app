@@ -1,3 +1,4 @@
+import 'package:ct_notes_app/core/theme/app_colors.dart';
 import 'package:ct_notes_app/features/splash/controller/splash_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -45,7 +46,7 @@ class SplashScreen extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: GoogleFonts.inter(
                   fontSize: 17,
-                  color: const Color(0xFF8E8E93),
+                  color: AppColors.primaryColor,
                 ),
               ),
               const Spacer(),

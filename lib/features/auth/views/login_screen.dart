@@ -1,4 +1,5 @@
 import 'package:ct_notes_app/core/routes/app_router.dart';
+import 'package:ct_notes_app/core/theme/app_colors.dart';
 import 'package:ct_notes_app/core/widgets/custom_elevated_button.dart';
 import 'package:ct_notes_app/core/widgets/custom_text_form_field.dart';
 import 'package:ct_notes_app/features/auth/controllers/login_controller.dart';
@@ -51,7 +52,7 @@ class LoginScreen extends StatelessWidget {
                   'Sign in to continue your notes.',
                   style: GoogleFonts.inter(
                     fontSize: 15,
-                    color: const Color(0xFF8E8E93),
+                    color: AppColors.primaryColor,
                   ),
                 ),
                 const SizedBox(height: 48),
@@ -81,7 +82,7 @@ class LoginScreen extends StatelessWidget {
                         controller.isPasswordHidden.value
                             ? Icons.visibility_off_outlined
                             : Icons.visibility_outlined,
-                        color: const Color(0xFF8E8E93),
+                        color: AppColors.primaryColor,
                         size: 20,
                       ),
                       onPressed: controller.togglePasswordVisibility,
@@ -123,7 +124,7 @@ class LoginScreen extends StatelessWidget {
                     Text(
                       "Don't have an account? ",
                       style: GoogleFonts.inter(
-                        color: const Color(0xFF8E8E93),
+                        color: AppColors.primaryColor,
                         fontSize: 14,
                       ),
                     ),

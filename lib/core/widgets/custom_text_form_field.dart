@@ -1,3 +1,4 @@
+import 'package:ct_notes_app/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -30,17 +31,14 @@ class CustomTextFormField extends StatelessWidget {
       keyboardType: keyboardType,
       obscureText: obscureText,
       maxLines: maxLines,
-      style: GoogleFonts.inter(
-        fontSize: 15,
-        color: const Color(0xFF1A1A2E),
-      ),
+      style: GoogleFonts.inter(fontSize: 15, color: const Color(0xFF1A1A2E)),
       decoration: InputDecoration(
         labelText: labelText,
         labelStyle: GoogleFonts.inter(
-          color: const Color(0xFF8E8E93),
+          color: AppColors.primaryColor,
           fontSize: 14,
         ),
-        prefixIcon: Icon(prefixIcon, color: const Color(0xFF8E8E93), size: 20),
+        prefixIcon: Icon(prefixIcon, color: AppColors.primaryColor, size: 20),
         suffixIcon: suffixIcon,
         filled: true,
         fillColor: const Color(0xFFF0EFEC),
@@ -64,7 +62,10 @@ class CustomTextFormField extends StatelessWidget {
           borderRadius: BorderRadius.circular(14),
           borderSide: const BorderSide(color: Color(0xFFEF4444), width: 1.5),
         ),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 18,
+        ),
       ),
       validator: validator,
     );
