@@ -45,16 +45,22 @@ The project follows a **Feature-First Architecture** for scalability and maintai
 
 ```text
 lib/
-├── core/               # Shared logic, themes, widgets, and routing
-│   ├── routes/         # App navigation configuration
-│   ├── theme/          # Global colors
-│   └── widgets/        # Reusable custom UI components
-├── features/           # Independent feature modules
-│   ├── auth/           # Login and Signup logic & UI
-│   ├── notes/          # Note listing, adding, and data models
-│   └── splash/         # Initial branding screen
+├── core/                 # Shared logic, themes, widgets, and routing
+│   ├── routes/           # App navigation configuration
+│   ├── theme/            # Global colors
+│   └── widgets/          # Reusable custom UI components
+├── features/             # Independent feature modules
+│   ├── auth/             # Login and Signup logic & UI
+│   ├── notes/            # Note listing, adding, and data models
+│   └── splash/           # Initial branding screen
 └── firebase_options.dart # Firebase configuration
 ```
+
+---
+
+## App Download Link
+
+[Download](https://drive.google.com/drive/folders/1geatwUmy_Q-pVJN2yT6YrdHnC_QlA382?usp=sharing)
 
 ---
 
